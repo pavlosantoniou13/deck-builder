@@ -12,6 +12,7 @@
     background: rgba(49,49,49,0.8);
 }
 .modal-content {
+    
     position: absolute;
     top: 40%;
     left: 50%;
@@ -22,6 +23,7 @@
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
+    
 }
 
 .close-modal {
@@ -29,4 +31,32 @@
     top: 10px;
     right: 10px;
     padding: 5px 7px;
+}
+
+.close {
+    --background: #FF0000;
+    
+    --text: #black;
+    
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 11px;
+    line-height: 24px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    overflow: hidden;
+    color: var(--text);
+    background: var(--b, var(--background));
+    transition: transform 0.15s ease-in-out 0s;
+    transform: scale(var(--scale, 1)) translateZ(0);
+}
+
+.close:hover {
+    transform: scale(1.1);
 }
