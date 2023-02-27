@@ -1,14 +1,18 @@
 import "./styles.css"
 import "./Components/Navbar.css"
+import "./Components/Modal.css"
 import Navbar from "./Components/Navbar";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import CardsContainer from "./Components/CardsContainer";
+import Modal from "./Components/Modal";
+
 
 function App() {
 
   const [characters, setCharacters] = useState([])
   const [isItemLoading, setIsItemLoading] = useState(false)
+  const [modal, setModal] = useState(false)
 
   const getApi = () => {
   Axios.get("https://rickandmortyapi.com/api/character").then((response) => {
@@ -36,7 +40,9 @@ function App() {
   
  }
 
- 
+ const toggleModal = () => {
+    setModal(!modal)
+ }
  
 
  console.log(characters)
@@ -45,7 +51,8 @@ function App() {
   return (
     <>
     <Navbar shuffleCards={shuffleCards} />
-    <CardsContainer characters={characters} />
+    <CardsContainer characters={characters} toggleModal={toggleModal} />
+    <Modal toggleModal={toggleModal} modal={modal} />
     </>
   );
 }
