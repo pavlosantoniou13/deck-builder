@@ -7,7 +7,7 @@ import CardsContainer from "./Components/CardsContainer";
 
 function App() {
 
-  const [characters, setCharacters] = useState("")
+  const [characters, setCharacters] = useState([])
   const [isItemLoading, setIsItemLoading] = useState(false)
 
  const getApi = () => {
@@ -26,7 +26,7 @@ function App() {
   return (
     <>
     <Navbar />
-    <CardsContainer />
+    <CardsContainer characters={characters} />
     </>
   );
 }
