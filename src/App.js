@@ -1,11 +1,13 @@
 import "./styles.css"
 import "./Components/Navbar.css"
 import "./Components/Modal.css"
+import "./Components/DeckBar.css"
 import Navbar from "./Components/Navbar";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import CardsContainer from "./Components/CardsContainer";
 import Modal from "./Components/Modal";
+import DeckBar from "./Components/DeckBar";
 
 
 function App() {
@@ -59,6 +61,7 @@ function App() {
   return (
     <>
     <Navbar shuffleCards={shuffleCards} />
+    <DeckBar characters={characters} />
     <CardsContainer characters={characters} toggleModal={toggleModal} />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
     </>
