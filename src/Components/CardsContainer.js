@@ -3,13 +3,17 @@ import Card from './Card'
 
 
 export default function CardsContainer(props) {
+
+  const cutcharacters = props.characters.slice(0,10)
+
+
   return (
     <div className="container">
         
         <div className="box-container">
 
           
-          {props.characters.map(card => (
+          {cutcharacters.map(card => (
              <Card key={card.id} card={card} /> 
           ))}
             
