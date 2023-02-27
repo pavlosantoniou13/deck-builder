@@ -12,7 +12,7 @@ export default function DeckBar(props) {
             
           
           {cutcharacters.map(card => (
-             <DeckCards key={card.id} card={card} toggleModal={props.toggleModal} /> 
+             <DeckCards key={card.id} card={card} toggleModal={props.toggleModal} removeCardFromDeck={props.removeCardFromDeck} /> 
           ))}
             
                         

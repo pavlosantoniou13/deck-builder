@@ -47,13 +47,23 @@ function App() {
 
 
  const addDeckCard = (e) => {
-  console.log(e.target.id)
   for(let i = 0; i < characters.length; i++) {
     if(e.target.id === characters[i].name){
       let character = characters[i]
       setDeckCards((prevDeck) => [...prevDeck, character])
+      
     }
   }
+ }
+
+
+ 
+
+ const removeCardFromDeck = (e) => {
+  console.log(e.target.id)
+  const newDeck = deckCards.filter((card) => card.name !== e.target.id)
+  setDeckCards(newDeck)
+
  }
 
 
@@ -77,7 +87,7 @@ function App() {
   return (
     <>
     <Navbar shuffleCards={shuffleCards} />
-    <DeckBar deckCards={deckCards} />
+    <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
     <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
     </>

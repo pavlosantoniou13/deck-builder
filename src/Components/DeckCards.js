@@ -8,7 +8,7 @@ export default function DeckCards(props) {
       <h3 className={props.card.name} >Name: {props.card.name}</h3>
       </div>
       <div className="delete-div">
-        <button className='delete'>Remove</button>
+        <button className='delete' id={props.card.name} onClick={props.removeCardFromDeck} >Remove</button>
       </div>
       
     </div>
