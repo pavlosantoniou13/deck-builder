@@ -10,15 +10,21 @@ function App() {
   const [characters, setCharacters] = useState([])
   const [isItemLoading, setIsItemLoading] = useState(false)
 
- const getApi = () => {
+  const getApi = () => {
   Axios.get("https://rickandmortyapi.com/api/character").then((response) => {
-  setCharacters(response.data.results)
-  })
- }
+    const shuffledapi = [...response.data.results].sort(() => Math.random() - 0.5)
+    .map((card) => ({ ...card, id: Math.random() }))
+    
+     setCharacters(shuffledapi)
+    
+    })
+  }
 
  useEffect(() => {
   getApi()
  },[])
+ 
+ 
  
 
  const shuffleCards = () => {
@@ -30,8 +36,8 @@ function App() {
   
  }
 
-
-
+ 
+ 
 
  console.log(characters)
 
