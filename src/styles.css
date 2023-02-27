@@ -82,3 +82,7 @@ img {
 .shuffle:hover {
     transform: scale(1.1);
 }
+
+h3{
+    padding: 3px;
+}
