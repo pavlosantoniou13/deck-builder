@@ -20,12 +20,25 @@ function App() {
   getApi()
  },[])
  
+
+ const shuffleCards = () => {
+  const shuffledcards = [...characters]
+  .sort(() => Math.random() - 0.5)
+  .map((card) => ({ ...card, id: Math.random() }))
+
+  setCharacters(shuffledcards)
+  
+ }
+
+
+
+
  console.log(characters)
 
 
   return (
     <>
-    <Navbar />
+    <Navbar shuffleCards={shuffleCards} />
     <CardsContainer characters={characters} />
     </>
   );
