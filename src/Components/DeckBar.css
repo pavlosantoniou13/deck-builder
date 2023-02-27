@@ -18,6 +18,7 @@
     text-align: center;
     padding: 15px 10px;
     color: white;
+   
     
 }
 
@@ -40,4 +41,38 @@
     margin-bottom: 20px;
     font-size: xx-large;
     color: #275EFE;
+}
+
+.delete-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.delete {
+    --background: #FF0000;
+    
+    --text: #black;
+    
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    border-radius: 11px;
+    line-height: 16px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 14px;
+    overflow: hidden;
+    color: var(--text);
+    background: var(--b, var(--background));
+    transition: transform 0.15s ease-in-out 0s;
+    transform: scale(var(--scale, 1)) translateZ(0);
+}
+
+.delete:hover {
+    transform: scale(1.1);
 }

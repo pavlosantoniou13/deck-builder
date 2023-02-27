@@ -7,6 +7,10 @@ export default function DeckCards(props) {
       <div className="name" onClick={props.toggleModal} id={props.card.name}  >
       <h3 className={props.card.name} >Name: {props.card.name}</h3>
       </div>
+      <div className="delete-div">
+        <button className='delete'>Remove</button>
+      </div>
+      
     </div>
   )
 }
