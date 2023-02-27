@@ -16,6 +16,7 @@ function App() {
   const [isItemLoading, setIsItemLoading] = useState(false)
   const [modal, setModal] = useState(false)
   const [modalInfo, setModalInfo] = useState([])
+  const [deckCards, setDeckCards] = useState([])
 
   const getApi = () => {
   Axios.get("https://rickandmortyapi.com/api/character").then((response) => {
@@ -26,6 +27,7 @@ function App() {
     
     })
   }
+
 
  useEffect(() => {
   getApi()
@@ -43,9 +45,21 @@ function App() {
   
  }
 
+
+ const addDeckCard = (e) => {
+  console.log(e.target.id)
+  for(let i = 0; i < characters.length; i++) {
+    if(e.target.id === characters[i].name){
+      let character = characters[i]
+      setDeckCards((prevDeck) => [...prevDeck, character])
+    }
+  }
+ }
+
+
+
  const toggleModal = (e) => {
     setModal(!modal)
-    console.log(e.target.className)
     for(let i = 0; i < characters.length; i++) {
       if(e.target.className === characters[i].name){
         setModalInfo(characters[i])
@@ -54,15 +68,17 @@ function App() {
  }
  
 
+ 
 
- console.log(modalInfo)
+
+ 
 
 
   return (
     <>
     <Navbar shuffleCards={shuffleCards} />
-    <DeckBar characters={characters} />
-    <CardsContainer characters={characters} toggleModal={toggleModal} />
+    <DeckBar deckCards={deckCards} />
+    <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
     </>
   );

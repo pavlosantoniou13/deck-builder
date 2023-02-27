@@ -3,7 +3,7 @@ import DeckCards from './DeckCards'
 
 export default function DeckBar(props) {
 
-    const cutcharacters = props.characters.slice(0,10)
+    const cutcharacters = props.deckCards.slice(0,8)
 
   return (
     <div className="deck">
