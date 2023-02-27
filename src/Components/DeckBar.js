@@ -1,6 +1,7 @@
 import React from 'react'
 import DeckCards from './DeckCards'
 
+
 export default function DeckBar(props) {
 
     const cutcharacters = props.deckCards.slice(0,8)

@@ -56,6 +56,7 @@ function App() {
   }
  }
 
+ 
 
  
 
@@ -66,6 +67,7 @@ function App() {
 
  }
 
+ 
 
 
  const toggleModal = (e) => {
@@ -80,7 +82,7 @@ function App() {
 
  
 
-
+console.log(deckCards)
  
 
 
