@@ -156,17 +156,19 @@ const handleSearchChange = (e) => {
   setCharacters(resultsArray)
 }
 
- 
+ //gets the id from the item that is dragged and sets the datatransfer accordingly
 const dragStarted = (e, id) => {
   id = e.target.id
   console.log(id)
   e.dataTransfer.setData("characterToMove",id)
 }
-
+//prevents the spamming that would happen while hovering over
 const draggingOver = (e) => {
   e.preventDefault()
 }
 
+//initialize a variable and store the data that we got from dragStarted that got transefered
+//then check if the card exists and also if it has arleady been added,then it gets added
 const dragDropped = (e) => {
   console.log("droped")
   let transferedCharacter = e.dataTransfer.getData("characterToMove")
