@@ -18,6 +18,7 @@ function App() {
   const [modal, setModal] = useState(false)
   const [modalInfo, setModalInfo] = useState([])
   const [deckCards, setDeckCards] = useState(deckFromLocalStorage)
+  const [btnDisabled, setBtnDisabled] = useState(false)
 
   useEffect(() => {
     localStorage.setItem("deck",JSON.stringify(deckCards))
@@ -43,11 +44,20 @@ function App() {
  
 
  const shuffleCards = () => {
-  const shuffledcards = [...characters]
-  .sort(() => Math.random() - 0.5)
-  .map((card) => ({ ...card, id: Math.random() }))
 
-  setCharacters(shuffledcards)
+
+  if(btnDisabled === false) {
+    const shuffledcards = [...characters]
+    .sort(() => Math.random() - 0.5)
+    .map((card) => ({ ...card, id: Math.random() }))
+  
+    setCharacters(shuffledcards)
+    setBtnDisabled(true);
+  }
+  
+  setTimeout(() => {
+    setBtnDisabled(false)
+  }, 15000)
   
  }
 
