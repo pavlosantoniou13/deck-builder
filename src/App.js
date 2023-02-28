@@ -22,6 +22,14 @@ function App() {
   const [btnDisabled, setBtnDisabled] = useState(false)
   const [shuffleButton, setShuffleButton] = useState("Shuffle")
   const [form, setForm] = useState(false)
+  const [newCharacter, setNewCharacter] = useState({
+    name: "",
+    status: "",
+    species: "",
+    location: "",
+    image: "",
+  })
+  
 
   
 
@@ -110,8 +118,21 @@ function App() {
 }
 
  
+const addNewCharacter = (e) => {
+  e.preventDefault()
+  const name = e.target.name
+  const value = e.target.value
+  setNewCharacter((prev) => {
+    return { ...prev, [name]: value}
+  })
+  
+}
 
-console.log(characters)
+const addNewCharacterToDeck = () => {
+  setDeckCards((prevDeck) => [...prevDeck, newCharacter])
+}
+
+console.log(newCharacter)
  
 
 
@@ -121,7 +142,7 @@ console.log(characters)
     <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
     <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
-    <Form form={form} toggleForm={toggleForm} />
+    <Form form={form} toggleForm={toggleForm} addNewCharacter={addNewCharacter} addNewCharacterToDeck={addNewCharacterToDeck} />
     </>
   );
 }

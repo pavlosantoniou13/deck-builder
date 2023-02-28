@@ -72,16 +72,10 @@
 
 
 
-.firstName,
-.lastName,
-.phone,
-.email,
-.schoolName,
-.titleOfStudy,
-.from,
-.to,
-.company,
-.position {
+.name,
+.status,
+.species,
+.location{
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -114,5 +108,40 @@ input {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+
+.add {
+    cursor: pointer;
+    
+    --background: #275EFE;
+    --background-hover: #1D4FE1;
+    --text: #fff;
+    --icon: #fff;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 11px;
+    line-height: 24px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    overflow: hidden;
+    color: var(--text);
+    background: var(--b, var(--background));
+    
+    transform: scale(var(--scale, 1)) translateZ(0);
+    transition: transform 0.15s ease-in-out 0s;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
+.add:hover {
+    transform: scale(1.1);
 }
 

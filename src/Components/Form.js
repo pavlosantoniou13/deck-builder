@@ -7,36 +7,52 @@ export default function Form(props) {
     <div className="modal">
         <div className="overlay" onClick={props.toggleForm} ></div>
         <div className="modal-content">
-                <form className='form' >
+                <form className='form' onSubmit={props.addNewCharacter} >
                     
                     <div className="upper">
-                        <div className="firstName">
-                            <label htmlFor="firstName">First Name</label>
-                            <input type="text" placeholder='First Name...' required
-                             id="name"  />   
+                        <div className="name">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" placeholder='Name...' required
+                             id="name" onChange={props.addNewCharacter} name='name'  />   
                         </div>
-                        <div className="lastName">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input type="text" placeholder='Last Name...' required 
-                         id="lastName"  />
+                        <div className="status">
+                            <label htmlFor="status">Status: Dead/Alive</label>
+                            <input type="text" placeholder='Status...' required 
+                         id="status" onChange={props.addNewCharacter} name='status'  />
                         </div>
                     </div> 
                     <div className="lower">  
-                        <div className="email">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" placeholder='Email...' required 
-                         id="email"  />
+                        <div className="species">
+                            <label htmlFor="species">Species</label>
+                            <input type="text" placeholder='Species...' required 
+                         id="species" onChange={props.addNewCharacter} name='species' />
                         </div>
-                        <div className="phone">
-                            <label htmlFor="phone">Phone number</label>
-                            <input type="number" placeholder='(00)+ 123-456-789' required
-                            onChange={props.handleChange} id="phone" value={props.phone} />
+                        <div className="location">
+                            <label htmlFor="location">Location</label>
+                            <input type="text" placeholder='Location...' required
+                            id='location' onChange={props.addNewCharacter} name="location" />
+                        </div>
+                       
+                    </div>  
+                    <div className="lower">  
+                        <div className="image">
+                            <label htmlFor="image">Image</label>
+                            <input type="url" placeholder='Enter URL Here...' required
+                            id='image' onChange={props.addNewCharacter} name='image' />
+                        </div>
+                        <div className="origin">
+                            <label htmlFor="origin">Origin</label>
+                            <input type="text" placeholder='Origin...' required
+                            id='origin' onChange={props.addNewCharacter} name='origin' />
                         </div>
                     </div>  
                     
+                    <button className='add' onClick={props.addNewCharacterToDeck} >Add</button>
                 </form>
 
-         <button className='close' onClick={props.toggleForm} >Close</button>
+            <div className="close-div">
+                <button className='close' onClick={props.toggleForm} >Close</button>
+            </div>
         </div>
     </div>  
     )}
