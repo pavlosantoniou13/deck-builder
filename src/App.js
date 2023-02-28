@@ -30,6 +30,7 @@ function App() {
     location: "",
     image: "",
   })
+  const [mainCharacters, setMainCharacters] = useState([])
   
 
   
@@ -46,6 +47,7 @@ function App() {
     .map((card) => ({ ...card, id: Math.random() }))
     
      setCharacters(shuffledapi)
+     setMainCharacters(shuffledapi)
     
     })
   }
@@ -138,13 +140,28 @@ const addNewCharacterToDeck = () => {
   setDeckCards((prevDeck) => [...prevDeck, newCharacter])
 }
 
+//if inoput doesnt exist then we set tha characters back to its original state.
+//if not we initialize a variable called input that contains the users input we capitalize the first letter and then we change the characters array based on the resultsArray.
+const handleSearchChange = (e) => {
+  if(!e.target.value) {
+    return setCharacters(mainCharacters)
+  }
+  
+  let input = e.target.value
+
+  input = input.charAt(0).toUpperCase() + input.slice(1)
+
+  const resultsArray = characters.filter(character => character.name.includes(input))
+
+  setCharacters(resultsArray)
+}
 
  
-
+  
 
   return (
     <>
-    <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton} toggleForm={toggleForm}  />
+    <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton} toggleForm={toggleForm} handleSearchChange={handleSearchChange}  />
     <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
     <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />

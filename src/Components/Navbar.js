@@ -7,7 +7,7 @@ export default function Navbar(props) {
         <div className="title" onClick={props.toggleForm} ><h1>Deck Builder</h1></div>
         <div className="Shuffle">
           <form action="input">
-             <input type="text" className='input' placeholder='Search...'   />
+             <input type="text" className='input' placeholder='Search...' onChange={props.handleSearchChange}   />
           </form>
           <div className="btn"><button className='shuffle' onClick={props.shuffleCards} >{props.shuffleButton}</button></div>
         </div>
