@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/deck-builder/static/css/main.766a861a.css",
+    "main.js": "/deck-builder/static/js/main.9f09dfcc.js",
+    "index.html": "/deck-builder/index.html",
+    "main.766a861a.css.map": "/deck-builder/static/css/main.766a861a.css.map",
+    "main.9f09dfcc.js.map": "/deck-builder/static/js/main.9f09dfcc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.766a861a.css",
+    "static/js/main.9f09dfcc.js"
+  ]
+}
