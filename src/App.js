@@ -2,12 +2,14 @@ import "./styles.css"
 import "./Components/Navbar.css"
 import "./Components/Modal.css"
 import "./Components/DeckBar.css"
+import "./Components/Form.css"
 import Navbar from "./Components/Navbar";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import CardsContainer from "./Components/CardsContainer";
 import Modal from "./Components/Modal";
 import DeckBar from "./Components/DeckBar";
+import Form from "./Components/Form";
 
 const deckFromLocalStorage = JSON.parse(localStorage.getItem("deck") || '[]')
 
@@ -19,7 +21,9 @@ function App() {
   const [deckCards, setDeckCards] = useState(deckFromLocalStorage)
   const [btnDisabled, setBtnDisabled] = useState(false)
   const [shuffleButton, setShuffleButton] = useState("Shuffle")
-  const [query, setQuery] = useState('')
+  const [form, setForm] = useState(false)
+
+  
 
   useEffect(() => {
     localStorage.setItem("deck",JSON.stringify(deckCards))
@@ -100,18 +104,24 @@ function App() {
  }
  
 
+ const toggleForm = () => {
+  setForm(!form)
+  console.log(form)
+}
+
  
 
-console.log(deckCards)
+console.log(characters)
  
 
 
   return (
     <>
-    <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton}  />
+    <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton} toggleForm={toggleForm}  />
     <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
     <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
+    <Form form={form} toggleForm={toggleForm} />
     </>
   );
 }

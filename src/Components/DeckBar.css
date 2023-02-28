@@ -76,3 +76,7 @@
 .delete:hover {
     transform: scale(1.1);
 }
+
+.deck-title {
+    cursor: pointer;
+}
