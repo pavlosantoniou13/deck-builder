@@ -14,7 +14,7 @@ export default function CardsContainer(props) {
 
           
           {cutcharacters.map(card => (
-             <Card key={card.id} card={card} toggleModal={props.toggleModal} addDeckCard={props.addDeckCard}  /> 
+             <Card key={card.id} card={card} toggleModal={props.toggleModal} addDeckCard={props.addDeckCard} dragStarted={props.dragStarted}  /> 
           ))}
             
                         

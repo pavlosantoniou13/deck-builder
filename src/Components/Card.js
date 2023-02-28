@@ -5,7 +5,8 @@ export default function Cards(props) {
   
 
   return (
-    <div className="box" key={props.card.id}  id={props.card.name}  card={props.card} name={props.card.name} onClick={props.addDeckCard} >
+    <div className="box" key={props.card.id}  id={props.card.name}  card={props.card} name={props.card.name} onClick={props.addDeckCard}
+    draggable onDragStart={props.dragStarted} >
       <img  src={props.card.image} id={props.card.name}  alt="" />
       <div className="name" onClick={props.toggleModal} id={props.card.name}  >
       <h3 className={props.card.name} >Name: {props.card.name}</h3>

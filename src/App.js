@@ -157,13 +157,35 @@ const handleSearchChange = (e) => {
 }
 
  
+const dragStarted = (e, id) => {
+  id = e.target.id
+  console.log(id)
+  e.dataTransfer.setData("characterToMove",id)
+}
+
+const draggingOver = (e) => {
+  e.preventDefault()
+}
+
+const dragDropped = (e) => {
+  console.log("droped")
+  let transferedCharacter = e.dataTransfer.getData("characterToMove")
+  
+  for(let i = 0; i < characters.length; i++) {
+    if(transferedCharacter === characters[i].name && !deckCards.includes(characters[i])){
+      let character = characters[i]
+      setDeckCards((prevDeck) => [...prevDeck, character])
+      
+    }
+  }
+}
   
 
   return (
     <>
     <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton} toggleForm={toggleForm} handleSearchChange={handleSearchChange}  />
-    <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
-    <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
+    <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} draggingOver={draggingOver} dragDropped={dragDropped} />
+    <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard} dragStarted={dragStarted}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
     <Form form={form} toggleForm={toggleForm} addNewCharacter={addNewCharacter} addNewCharacterToDeck={addNewCharacterToDeck} />
     </>

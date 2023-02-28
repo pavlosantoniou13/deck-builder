@@ -7,7 +7,7 @@ export default function DeckBar(props) {
     const cutcharacters = props.deckCards.slice(0,8)
 
   return (
-    <div className="deck">
+    <div className="deck" onDragOver={(e) => props.draggingOver(e)} onDrop={(e)=> props.dragDropped(e)}  >
         <div className="deck-title">Your Deck</div>
         <div className="deck-box-container">
             
