@@ -75,7 +75,9 @@
 .name,
 .status,
 .species,
-.location{
+.location,
+.image,
+.origin{
     display: flex;
     flex-direction: column;
     gap: 4px;
