@@ -2,6 +2,7 @@
   "name": "deck-builder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://pavlosantoniou13.github.io/deck-builder/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -16,6 +17,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dist": "electron-builder"
@@ -40,7 +43,8 @@
   },
   "devDependencies": {
     "electron": "^23.1.1",
-    "electron-builder": "^23.6.0"
+    "electron-builder": "^23.6.0",
+    "gh-pages": "^5.0.0"
   },
   "build": {
     "target": "NSIS",
