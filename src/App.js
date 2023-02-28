@@ -14,11 +14,12 @@ const deckFromLocalStorage = JSON.parse(localStorage.getItem("deck") || '[]')
 function App() {
 
   const [characters, setCharacters] = useState([])
-  const [isItemLoading, setIsItemLoading] = useState(false)
   const [modal, setModal] = useState(false)
   const [modalInfo, setModalInfo] = useState([])
   const [deckCards, setDeckCards] = useState(deckFromLocalStorage)
   const [btnDisabled, setBtnDisabled] = useState(false)
+  const [shuffleButton, setShuffleButton] = useState("Shuffle")
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     localStorage.setItem("deck",JSON.stringify(deckCards))
@@ -45,6 +46,7 @@ function App() {
 
  const shuffleCards = () => {
 
+  
 
   if(btnDisabled === false) {
     const shuffledcards = [...characters]
@@ -53,10 +55,12 @@ function App() {
   
     setCharacters(shuffledcards)
     setBtnDisabled(true);
+    setShuffleButton("Shuffling...")
   }
   
   setTimeout(() => {
     setBtnDisabled(false)
+    setShuffleButton("Shuffle")
   }, 15000)
   
  }
@@ -104,7 +108,7 @@ console.log(deckCards)
 
   return (
     <>
-    <Navbar shuffleCards={shuffleCards} />
+    <Navbar shuffleCards={shuffleCards} shuffleButton={shuffleButton}  />
     <DeckBar deckCards={deckCards}  removeCardFromDeck={removeCardFromDeck} />
     <CardsContainer characters={characters} toggleModal={toggleModal} addDeckCard={addDeckCard}  />
     <Modal toggleModal={toggleModal} modal={modal} modalInfo={modalInfo} />
