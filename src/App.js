@@ -9,6 +9,7 @@ import CardsContainer from "./Components/CardsContainer";
 import Modal from "./Components/Modal";
 import DeckBar from "./Components/DeckBar";
 
+const deckFromLocalStorage = JSON.parse(localStorage.getItem("deck") || '[]')
 
 function App() {
 
@@ -16,7 +17,12 @@ function App() {
   const [isItemLoading, setIsItemLoading] = useState(false)
   const [modal, setModal] = useState(false)
   const [modalInfo, setModalInfo] = useState([])
-  const [deckCards, setDeckCards] = useState([])
+  const [deckCards, setDeckCards] = useState(deckFromLocalStorage)
+
+  useEffect(() => {
+    localStorage.setItem("deck",JSON.stringify(deckCards))
+  },[deckCards])
+
 
   const getApi = () => {
   Axios.get("https://rickandmortyapi.com/api/character").then((response) => {
