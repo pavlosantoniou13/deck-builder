@@ -48,7 +48,7 @@ function App() {
 
  const addDeckCard = (e) => {
   for(let i = 0; i < characters.length; i++) {
-    if(e.target.id === characters[i].name){
+    if(e.target.id === characters[i].name && !deckCards.includes(characters[i])){
       let character = characters[i]
       setDeckCards((prevDeck) => [...prevDeck, character])
       
