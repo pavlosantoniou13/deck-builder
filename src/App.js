@@ -11,6 +11,7 @@ import Modal from "./Components/Modal";
 import DeckBar from "./Components/DeckBar";
 import Form from "./Components/Form";
 
+//Save Deck of Characters in local storage
 const deckFromLocalStorage = JSON.parse(localStorage.getItem("deck") || '[]')
 
 function App() {
@@ -33,11 +34,12 @@ function App() {
 
   
 
+  //everytime deckCards get updated local storage gets updated to with the new deckCards object
   useEffect(() => {
     localStorage.setItem("deck",JSON.stringify(deckCards))
   },[deckCards])
 
-
+  //Fetchs the Characters API and shuffles it for the first display of everytime the page gets refreshed
   const getApi = () => {
   Axios.get("https://rickandmortyapi.com/api/character").then((response) => {
     const shuffledapi = [...response.data.results].sort(() => Math.random() - 0.5)
@@ -49,16 +51,15 @@ function App() {
   }
 
 
+  //Runs the function that Fetches the API
  useEffect(() => {
   getApi()
  },[])
  
  
  
-
+ //Triggered by the Shuffle button located in the navbar, Shuffles the cards and sets a timer so the user has to wait 15 seconds before he can shuffle again.
  const shuffleCards = () => {
-
-  
 
   if(btnDisabled === false) {
     const shuffledcards = [...characters]
@@ -78,6 +79,8 @@ function App() {
  }
 
 
+ //Triggered by all of the cards in the CardsContainer, checks if the cards name that got clicked matches any of the cards arleady in the deck.
+ //if it does then it doesnt add it and if it doesnt it does add it
  const addDeckCard = (e) => {
   for(let i = 0; i < characters.length; i++) {
     if(e.target.id === characters[i].name && !deckCards.includes(characters[i])){
@@ -92,8 +95,8 @@ function App() {
 
  
 
+ //Triggered by the Delete button that every card that is on the deck has. Filters through the array and finds the card that the user picked and creates a new array that does not contain that card.
  const removeCardFromDeck = (e) => {
-  console.log(e.target.id)
   const newDeck = deckCards.filter((card) => card.name !== e.target.id)
   setDeckCards(newDeck)
 
@@ -101,7 +104,8 @@ function App() {
 
  
 
-
+ //Triggerd by the name of each card, Shows the details of the card pressed.
+ // works with a boolean if false modal is closed and if its true modal is up
  const toggleModal = (e) => {
     setModal(!modal)
     for(let i = 0; i < characters.length; i++) {
@@ -111,13 +115,14 @@ function App() {
     }
  }
  
-
+//same logic as modal
  const toggleForm = () => {
   setForm(!form)
-  console.log(form)
+  
 }
 
  
+//Gets the values from the form and creates a new character with the setNewCharacter
 const addNewCharacter = (e) => {
   e.preventDefault()
   const name = e.target.name
@@ -128,11 +133,12 @@ const addNewCharacter = (e) => {
   
 }
 
+//this is triggered by the add button and it finally adds the new Character in the deck
 const addNewCharacterToDeck = () => {
   setDeckCards((prevDeck) => [...prevDeck, newCharacter])
 }
 
-console.log(newCharacter)
+
  
 
 
